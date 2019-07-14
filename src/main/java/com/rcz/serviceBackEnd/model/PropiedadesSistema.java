@@ -5,6 +5,7 @@
  */
 package com.rcz.serviceBackEnd.model;
 
+import com.rcz.serviceBackEnd.configuration.Auditable;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +29,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @NoArgsConstructor
 @Table(name = "PROPERTIES")
 @EntityListeners(AuditingEntityListener.class)
-public class PropiedadesSistema implements Serializable {
+public class PropiedadesSistema extends Auditable<String> implements Serializable {
 
     @Id
     @Column(name = "PROP_ID")

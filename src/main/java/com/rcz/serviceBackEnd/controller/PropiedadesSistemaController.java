@@ -5,9 +5,12 @@
  */
 package com.rcz.serviceBackEnd.controller;
 
+import com.rcz.serviceBackEnd.beans.PropiedadesSistemaBean;
 import com.rcz.serviceBackEnd.exception.ResourceNotFoundException;
 import com.rcz.serviceBackEnd.model.PropiedadesSistema;
 import com.rcz.serviceBackEnd.repository.PropiedadesSistemaRepository;
+import com.rcz.serviceBackEnd.service.PropiedadesService;
+import com.rcz.serviceBackEnd.service.PropiedadesServiceImpl;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,19 +38,22 @@ public class PropiedadesSistemaController {
     @Autowired
     PropiedadesSistemaRepository propiedadesSistemaRepository;
 
+    @Autowired
+    private PropiedadesService propiedadesService;
+
     @GetMapping("/propiedadesSistema")
     public List<PropiedadesSistema> getAllPropiedadesSistema() {
-        return propiedadesSistemaRepository.findAll();
+        return propiedadesService.obtenerListadoPropiedadesSistema();
     }
 
     @PostMapping("/propiedadesSistema")
-    public PropiedadesSistema createPropiedadesSistema(@Valid @RequestBody PropiedadesSistema propiedadesSistema) {
-        return propiedadesSistemaRepository.save(propiedadesSistema);
+    public PropiedadesSistema createPropiedadesSistema(@Valid @RequestBody PropiedadesSistemaBean propiedadesSistemaBean) {
+        return propiedadesService.crearPropiedadesSistema(propiedadesSistemaBean);
     }
 
     @GetMapping("/propiedadesSistema/{id}")
     public PropiedadesSistema getPropiedadesSistemaById(@PathVariable(value = "id") Long propiedadesSistemaRepositoryId) {
-        return propiedadesSistemaRepository.findById(propiedadesSistemaRepositoryId)
+        return propiedadesService.obtenerPropiedadSistema(propiedadesSistemaRepositoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("PropiedadesSistema", "id", propiedadesSistemaRepositoryId));
     }
 

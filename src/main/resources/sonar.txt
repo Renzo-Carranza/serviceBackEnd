@@ -1,0 +1,1 @@
+mvn sonar:sonar   -Dsonar.projectKey=Proyecto_Java_Servicio   -Dsonar.host.url=http://localhost:9005   -Dsonar.login=c3d4d57588049c534e0c1b71e6c3f3c844c448d4

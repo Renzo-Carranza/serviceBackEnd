@@ -6,8 +6,8 @@
 package com.rcz.serviceBackEnd.service;
 
 import com.rcz.serviceBackEnd.beans.PropiedadesSistemaBean;
+import com.rcz.serviceBackEnd.dao.PropiedadesSistemaDAO;
 import com.rcz.serviceBackEnd.model.PropiedadesSistema;
-import com.rcz.serviceBackEnd.repository.PropiedadesSistemaRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 public class PropiedadesServiceImpl implements PropiedadesService {
 
     @Autowired
-    PropiedadesSistemaRepository propiedadesSistemaRepository;
+    PropiedadesSistemaDAO propiedadesSistemaRepository;
 
     @Override
     public List<PropiedadesSistema> obtenerListadoPropiedadesSistema() {

@@ -5,8 +5,7 @@
  */
 package com.rcz.serviceBackEnd.repository;
 
-import com.rcz.serviceBackEnd.model.PropiedadesSistema;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.rcz.serviceBackEnd.dao.PropiedadesSistemaDAO;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author Renzo
  */
 @Repository
-public interface PropiedadesSistemaRepository extends JpaRepository<PropiedadesSistema, Long> {
+public interface PropiedadesSistemaRepository extends PropiedadesSistemaDAO {
 
 }

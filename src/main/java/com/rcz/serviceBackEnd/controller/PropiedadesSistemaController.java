@@ -10,7 +10,6 @@ import com.rcz.serviceBackEnd.exception.ResourceNotFoundException;
 import com.rcz.serviceBackEnd.model.PropiedadesSistema;
 import com.rcz.serviceBackEnd.repository.PropiedadesSistemaRepository;
 import com.rcz.serviceBackEnd.service.PropiedadesService;
-import com.rcz.serviceBackEnd.service.PropiedadesServiceImpl;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/serviceBackEnd")
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 public class PropiedadesSistemaController {
 
     @Autowired
@@ -53,8 +52,7 @@ public class PropiedadesSistemaController {
 
     @GetMapping("/propiedadesSistema/{id}")
     public PropiedadesSistema getPropiedadesSistemaById(@PathVariable(value = "id") Long propiedadesSistemaRepositoryId) {
-        return propiedadesService.obtenerPropiedadSistema(propiedadesSistemaRepositoryId)
-                .orElseThrow(() -> new ResourceNotFoundException("PropiedadesSistema", "id", propiedadesSistemaRepositoryId));
+        return propiedadesService.obtenerPropiedadSistema(propiedadesSistemaRepositoryId);
     }
 
     @PutMapping("/propiedadesSistema/{id}")

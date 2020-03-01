@@ -9,7 +9,10 @@ import com.rcz.serviceBackEnd.beans.PropiedadesSistemaBean;
 import com.rcz.serviceBackEnd.dao.PropiedadesSistemaDAO;
 import com.rcz.serviceBackEnd.model.PropiedadesSistema;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,12 +28,15 @@ public class PropiedadesServiceImpl implements PropiedadesService {
 
     @Override
     public List<PropiedadesSistema> obtenerListadoPropiedadesSistema() {
-        return propiedadesSistemaRepository.findAll();
+        List<PropiedadesSistema> aa = propiedadesSistemaRepository.findAll();
+        Map<String, PropiedadesSistema> result = aa.stream().collect(Collectors.toMap(PropiedadesSistema::getKey, Function.identity()));
+        return aa;
     }
 
     @Override
-    public Optional<PropiedadesSistema> obtenerPropiedadSistema(Long idPropiedadSistema) {
-        return propiedadesSistemaRepository.findById(idPropiedadSistema);
+    public PropiedadesSistema obtenerPropiedadSistema(Long idPropiedadSistema) {
+        Optional<PropiedadesSistema> propiedadSistema = propiedadesSistemaRepository.findById(idPropiedadSistema);
+        return propiedadSistema.get();
     }
 
     @Override

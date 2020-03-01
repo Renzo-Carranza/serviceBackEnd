@@ -14,12 +14,11 @@ import java.util.Optional;
  *
  * @author Renzo
  */
-
 public interface PropiedadesService {
 
     public List<PropiedadesSistema> obtenerListadoPropiedadesSistema();
 
-    public Optional<PropiedadesSistema> obtenerPropiedadSistema(Long idPropiedadSistema);
+    public PropiedadesSistema obtenerPropiedadSistema(Long idPropiedadSistema);
 
     public PropiedadesSistema crearPropiedadesSistema(PropiedadesSistemaBean propiedadesSistemaBean);
 }
